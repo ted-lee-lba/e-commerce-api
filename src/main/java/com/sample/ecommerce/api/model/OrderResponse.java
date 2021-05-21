@@ -1,5 +1,6 @@
-package com.sample.ecommerce.domain.dto;
+package com.sample.ecommerce.api.model;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.ArrayList;
@@ -13,12 +14,14 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderDTO {
+public class OrderResponse {
 	private Integer orderId;
 	private Integer buyerId;
 	private Integer merchantId;
-	private Timestamp orderTime;
-
+	private String merchantName;
+	private Timestamp orderedTime;
+	private BigDecimal orderedTotal;
+	private Integer orderedQuantity;
 	@Builder.Default
-	private List<OrderProductDTO> products = new ArrayList<>();
+	private List<OrderProductResponse> products = new ArrayList<>();
 }

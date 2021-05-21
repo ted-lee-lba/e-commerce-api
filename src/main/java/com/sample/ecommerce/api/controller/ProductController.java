@@ -8,11 +8,8 @@ import com.sample.ecommerce.api.model.AccountResponse;
 import com.sample.ecommerce.domain.service.ProductService;
 import com.sample.ecommerce.security.UserPrincipal;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("api/product")
 public class ProductController {
-    private final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
     @Autowired
     private ProductService _productService;

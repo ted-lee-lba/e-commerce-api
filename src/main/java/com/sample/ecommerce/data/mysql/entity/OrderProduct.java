@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -25,15 +27,16 @@ public class OrderProduct implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "order_product_id", nullable = false)
-  private Integer order_product_id;
-  @Column(name = "order_id", nullable = false)
-  private Integer orderId;
+  private Integer orderProductId;
+  @ManyToOne
+  @JoinColumn(name="order_id", nullable=false)
+  private Order order;
   @Column(name = "product_code", nullable = false)
   private String productCode;
-  @Column(name = "order_time", nullable = false)
-  private String productDescr;
+  @Column(name = "product_name", nullable = false)
+  private String productName;
   @Column(name = "price", nullable = false)
   private BigDecimal price;
   @Column(name = "quantity", nullable = false)
-  private Integer quantity;
+  private Integer quantity; 
 }

@@ -1,5 +1,8 @@
 package com.sample.ecommerce.api.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,9 +12,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AccountResponse {
-    private Integer accountId;
-    private String userName;
-    private String accountType;
-    private Boolean emailVerified;
+public class OrderRequest {
+	private Integer buyerId;
+
+	@Builder.Default
+	private List<OrderProductRequest> products = new ArrayList<>();
 }

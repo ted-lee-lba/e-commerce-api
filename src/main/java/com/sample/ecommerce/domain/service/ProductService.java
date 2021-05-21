@@ -13,7 +13,9 @@ import com.sample.ecommerce.domain.exception.ElementNotFoundException;
 import com.sample.utils.DateUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ProductService {
     @Autowired
     private GlobalModelMapper _dtoMapper;
@@ -49,13 +51,18 @@ public class ProductService {
         return _dtoMapper.getMapper().map(product, ProductDTO.class);
     }
 
-    public ProductDTO update(ProductDTO productDto, String actUser) throws ElementNotFoundException {
-        if (_productRepository.findByProductIdAndAccountId(productDto.getProductId(), productDto.getAccountId()).isPresent()) {
-            throw new ElementNotFoundException("Product code [" + productDto.getProductCode() + "] not found.");
+    public ProductDTO update(ProductDTO productDto, String actUser) throws ElementNotFoundException, ElementExistedException {
+        Product product = _productRepository.findByProductIdAndAccountId(productDto.getProductId(), productDto.getAccountId())
+            .orElseThrow(() -> new ElementNotFoundException("Product id [" + productDto.getProductId() + "] and Account Id [" + productDto.getAccountId() + "] not found."));
+
+        if (!product.getProductCode().equals(productDto.getProductCode())) {
+            if (_productRepository.findByProductCode(productDto.getProductCode()).isPresent()) {
+                throw new ElementExistedException("Product code [" + productDto.getProductCode() + "] already existed.");
+            }
         }
 
         Timestamp tsNow = DateUtils.currentTimeStamp();
-        Product product = _dtoMapper.getMapper().map(productDto, Product.class);
+        _dtoMapper.getMapper().map(productDto, product);
         product.setUpdatedBy(actUser);
         product.setUpdatedDate(tsNow);
         _productRepository.save(product);

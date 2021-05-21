@@ -34,6 +34,24 @@ public class AccountService {
             return _dtoMapper.getMapper().map(c, AccountDTO.class);
         }).collect(Collectors.toList());
     }
+    
+    public List<AccountDTO> getAll() {
+        return _accountRepository.findAll().stream().map(c -> {
+            return _dtoMapper.getMapper().map(c, AccountDTO.class);
+        }).collect(Collectors.toList());
+    }
+
+    @Transactional
+    public AccountDTO addNewMerchant(AccountDTO accountDto) throws ElementExistedException {
+        accountDto.setAccountType("ROLE_MERCHANT");
+        return addNew(accountDto);
+    }
+
+    @Transactional
+    public AccountDTO addNewUser(AccountDTO accountDto) throws ElementExistedException {
+        accountDto.setAccountType("ROLE_USER");
+        return addNew(accountDto);
+    }
 
     @Transactional
     public AccountDTO addNew(AccountDTO accountDto) throws ElementExistedException {
@@ -43,6 +61,8 @@ public class AccountService {
 
         Timestamp tsNow = DateUtils.currentTimeStamp();
         Account account = _dtoMapper.getMapper().map(accountDto, Account.class);
+        account.setEmailVerified(false);
+        account.setStatus("ACTIVE");
         account.setPassword(_passwordEncoder.encode(accountDto.getPassword()));
         account.setCreatedBy(account.getUserName());
         account.setCreatedDate(tsNow);

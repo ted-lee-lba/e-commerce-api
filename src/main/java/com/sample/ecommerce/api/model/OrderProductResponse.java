@@ -11,11 +11,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderProductDTO {
-  private Integer order_product_id;
-  private Integer orderId;
-  private String productCode;
-  private String productDescr;
-  private BigDecimal price;
-  private Integer quantity;
+public class OrderProductResponse {
+	private Integer order_product_id;
+	private Integer orderId;
+	private String productCode;
+	private String productDescr;
+	private BigDecimal price;
+	private Integer quantity;
 }

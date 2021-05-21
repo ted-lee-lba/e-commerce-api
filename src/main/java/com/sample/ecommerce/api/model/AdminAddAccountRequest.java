@@ -11,10 +11,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AccountRequest {
+public class AdminAddAccountRequest {
 	private Integer accountId;
 	@NotBlank
 	private String userName;
 	@NotBlank
 	private String password;
+	@NotBlank
+	private String accountType;
 }

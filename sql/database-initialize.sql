@@ -38,7 +38,7 @@ CREATE TABLE `orders` (
   `buyer_id` INT NOT NULL,
   `merchant_id` INT NOT NULL,
   `order_time` DATETIME NOT NULL,
-  `order_status` VARCHAR(45) NOT NULL,
+  `order_status` VARCHAR(45) NOT NULL COMMENT 'ACTIVE,CANCELLED' ,
   `created_date` DATETIME NOT NULL,
   `created_by` VARCHAR(320) NOT NULL,
   `updated_date` DATETIME NOT NULL,

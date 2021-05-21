@@ -9,11 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AccountDTO {
-	private Integer accountId;
-	private String userName;
-	private String password;
-	private String accountType;
-	private Boolean emailVerified;
-	private String status;
+public class AddOrderProductDTO {
+	private Integer productId;
+	private Integer quantity;
 }

@@ -87,7 +87,11 @@ public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.css",
                         "/**/*.js")
                         .permitAll()
-                    .antMatchers("/api/auth/**")
+                    .antMatchers(
+                        "/api/auth/**",
+                        "/api/merchant/register",
+                        "/api/user/register"
+                    )
                         .permitAll()
                     // .antMatchers("/api/user/checkUsernameAvailability", "/api/user/checkEmailAvailability")
                     //     .permitAll()

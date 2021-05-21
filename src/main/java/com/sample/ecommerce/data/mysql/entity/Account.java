@@ -33,8 +33,9 @@ public class Account implements Serializable {
   private String password;
   @Column(name = "account_type", nullable = false)
   private String accountType;
+  @Builder.Default
   @Column(name = "is_email_verified", nullable = false)
-  private Boolean emailVerified;
+  private Boolean emailVerified = false;
   @Column(name = "status", nullable = false)
   private String status;
   @Column(name = "created_date", nullable = false)
