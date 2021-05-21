@@ -89,12 +89,12 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/user/confirm-account/abc@xyz.com",
+							"raw": "{{url}}/admin/confirm-account/abc@xyz.com",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"user",
+								"admin",
 								"confirm-account",
 								"abc@xyz.com"
 							]
@@ -171,35 +171,6 @@
 					"response": []
 				},
 				{
-					"name": "Suspend User",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/user/suspend/abc@xyz.com",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"user",
-								"suspend",
-								"abc@xyz.com"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Confirm User",
 					"request": {
 						"auth": {
@@ -223,33 +194,6 @@
 								"user",
 								"confirm-account",
 								"abc@xyz.com"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "List User",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/user",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"user"
 							]
 						}
 					},
@@ -428,33 +372,6 @@
 								"merchant",
 								"confirm-account",
 								"def@xyz.com"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "List Merchant",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/merchant",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"merchant"
 							]
 						}
 					},
